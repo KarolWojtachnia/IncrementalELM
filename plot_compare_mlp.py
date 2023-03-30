@@ -22,11 +22,11 @@ fig, ax = plt.subplots(3, 1, figsize=(10, 10))
 for m_id, m_label in enumerate(labels):
     ax[0].plot(gaussian_filter(scores[m_id], k), label=m_label, c=cols[m_id], alpha=0.5)
     ax[1].plot(scores_to_cummean(scores[m_id]), label=m_label, c=cols[m_id], alpha=0.5)
-    ax[2].plot(gaussian_filter(ptimes[m_id], k), label=m_label, c=cols[m_id], alpha=0.5)
+    ax[2].plot(scores_to_cummean(ptimes[m_id]), label=m_label, c=cols[m_id], alpha=0.5)
 
 ax[0].set_title('accuracy')
-ax[1].set_title('Accumulated accuracy')
-ax[2].set_title('training times')
+ax[1].set_title('accumulated accuracy')
+ax[2].set_title('accumulated training time')
 
 ax[0].set_ylim(0.5,1)
 ax[1].set_ylim(0.5,1)
@@ -39,3 +39,4 @@ for a in ax:
 
 plt.tight_layout()
 plt.savefig('foo.png')
+plt.savefig('fig/compare.png')
