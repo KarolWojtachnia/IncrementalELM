@@ -13,18 +13,14 @@ cols = plt.cm.jet(np.linspace(0,1,len(deltas)))
 
 fig, ax = plt.subplots(1, 1, figsize=(10, 6))
 
-for r_id, r in enumerate(deltas):
-    t = scores_to_cummean(res[r_id])
-    ax.plot(t, label="update rate %.1f" % r, c=cols[r_id], alpha=0.5)
+ax.imshow(res[:,1:], cmap='coolwarm', aspect='auto')
 
-ax.legend()
-ax.grid(ls=":")
-ax.set_ylim(0.62, 0.67)
+ax.set_yticks(np.arange(len(deltas)), ['%.1f' % d for d in deltas])
+
 ax.set_title('Update rate comparison')
 ax.set_xlabel('Chunk number')
-ax.set_ylabel('accuracy')    
-ax.spines['top'].set_visible(False)
-ax.spines['right'].set_visible(False)
+ax.set_ylabel('update rate')  
+
 
 plt.tight_layout()
 plt.savefig('foo.png')

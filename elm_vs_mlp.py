@@ -19,7 +19,7 @@ for r_id, r in enumerate(random_states):
     stream = sl.streams.StreamGenerator(n_chunks=n_chunks,
                                         chunk_size=1000,
                                         n_classes=2,
-                                        n_drifts=8,
+                                        n_drifts=18,
                                         n_features=20,
                                         n_informative=20,
                                         n_redundant=0,
