@@ -14,12 +14,13 @@ for r_id, r in enumerate(random_states):
     stream = sl.streams.StreamGenerator(n_chunks=n_chunks,
                                         chunk_size=1000,
                                         n_classes=2,
-                                        n_drifts=5,
+                                        n_drifts=18,
                                         n_features=20,
                                         n_informative=20,
                                         n_redundant=0,
                                         n_repeated=0,
                                         class_sep=0.5,
+                                        y_flip=0.05,
                                         random_state = r,
                                         concept_sigmoid_spacing=999)
 
