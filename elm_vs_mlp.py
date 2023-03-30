@@ -29,9 +29,9 @@ for r_id, r in enumerate(random_states):
                                         concept_sigmoid_spacing=999)
 
     methods = [
-        elm(hidden_units=100, delta=.3),
+        elm(hidden_units=100, delta=.8),
         MLPClassifier(hidden_layer_sizes=(100,)),
-        ExtremeMLP(hidden_units=100, delta=.3)]
+        ExtremeMLP(hidden_units=100, delta=.8)]
 
     chunk_id = 0
     while chunk := stream.get_chunk():
