@@ -29,8 +29,8 @@ ax[2].set_xlabel('chunk')
 ax[1].set_ylabel('accumulated accuracy')
 ax[2].set_ylabel('accumulated training time')
 
-ax[0].set_ylim(0.5,1)
-ax[1].set_ylim(0.5,1)
+ax[0].set_ylim(0.5,0.9)
+ax[1].set_ylim(0.5,0.8)
 ax[2].set_xlim(0,249)
 ax[0].legend(frameon=False, ncol=3)
 
