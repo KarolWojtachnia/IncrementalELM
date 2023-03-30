@@ -32,7 +32,7 @@ class ExtremeLearningMachine(BaseEstimator, ClassifierMixin):
         self.delta = delta
 
     def fit(self, X, y):
-        new_y = y
+        new_y = y.copy()
         new_y[new_y == 0] = -1
         new_y[new_y > 0] = 1
 
@@ -54,17 +54,18 @@ class ExtremeLearningMachine(BaseEstimator, ClassifierMixin):
         return self
 
     def partial_fit(self, X, y, classes=None):
-        y[y == 0] = -1
+        new_y = y.copy()
+        new_y[new_y == 0] = -1
         if self.biases_ is None:
-            self.fit(X, y)
+            self.fit(X, new_y)
         else:
             input_to_hidden_nodes = sigmoid(np.dot(X, self.input_weights.T) + self.biases_)
             if self.weighted:
-                new_output_weights = self.__compute_output_weights_weighted(input_to_hidden_nodes, X.shape[0], y)
-                self.output_weights = self.delta * self.output_weights + (1 - self.delta) * new_output_weights
+                new_output_weights = self.__compute_output_weights_weighted(input_to_hidden_nodes, X.shape[0], new_y)
+                self.output_weights = (1-self.delta) * self.output_weights + self.delta * new_output_weights
             else:
-                new_output_weights = self.__compute_output_weights_NOT_weighted(input_to_hidden_nodes, X.shape[0], y)
-                self.output_weights = self.delta * self.output_weights + (1 - self.delta) * new_output_weights
+                new_output_weights = self.__compute_output_weights_NOT_weighted(input_to_hidden_nodes, X.shape[0], new_y)
+                self.output_weights = (1-self.delta) * self.output_weights + self.delta * new_output_weights
 
     def predict(self, X):
         check_is_fitted(self)
