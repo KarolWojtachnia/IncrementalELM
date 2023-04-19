@@ -34,7 +34,7 @@ ax.set_title('Average restoration curve')
 for m_id, m_label in enumerate(labels):
     ax.plot(gaussian_filter(scores_r_m[m_id], k), label=m_label, c=cols[m_id], alpha=0.75)
 
-ax.vlines(prev, 0.5, 0.9, color='black', alpha=0.5, ls=':')
+ax.vlines(prev-2, 0.5, 0.9, color='black', alpha=0.5, ls=':')
 
 ax.set_ylabel('accuracy')
 ax.set_xlabel('chunk')
