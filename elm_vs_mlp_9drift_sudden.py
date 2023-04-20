@@ -20,7 +20,7 @@ for r_id, r in enumerate(random_states):
     stream = sl.streams.StreamGenerator(n_chunks=n_chunks,
                                         chunk_size=1000,
                                         n_classes=2,
-                                        n_drifts=18,
+                                        n_drifts=9,
                                         n_features=20,
                                         n_informative=20,
                                         n_redundant=0,
@@ -62,6 +62,4 @@ for r_id, r in enumerate(random_states):
         
         chunk_id+=1
 
-np.save('res/scores_vs.npy', scores)
-np.save('res/ptimes_vs.npy', ptimes)
-np.save('res/ttimes_vs.npy', ttimes)
+np.save('res/elm_vs_mlp_9drift_sudden.npy', scores)

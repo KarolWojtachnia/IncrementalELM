@@ -27,7 +27,7 @@ for r_id, r in enumerate(random_states):
                                         n_repeated=0,
                                         class_sep=0.5,
                                         random_state = r,
-                                        concept_sigmoid_spacing=999)
+                                        concept_sigmoid_spacing=10)
 
     methods = [
         elm(hidden_units=100, delta=.8),
@@ -62,6 +62,4 @@ for r_id, r in enumerate(random_states):
         
         chunk_id+=1
 
-np.save('res/scores_vs.npy', scores)
-np.save('res/ptimes_vs.npy', ptimes)
-np.save('res/ttimes_vs.npy', ttimes)
+np.save('res/elm_vs_mlp_18drift_gradual.npy', scores)
